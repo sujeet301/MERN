@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        button {
+            background-color: red;
+            color: white;
+            margin: auto;
+            width: 100px;
+            height: 200px;
+            border: none;
+            cursor: pointer;
+            transition: background-color 1s ease, color 1s ease, width 1s ease, height 1s ease; /* Add transition for background color, text color, width, and height */
+        }
+
+        button:hover {
+            background-color: blue; /* Change background color on hover */
+            color: white; /* Change text color on hover */
+            width: 200px; /* Change width on hover */
+            height: 100px; /* Change height on hover */
+            
+        }
+        .circle {
+            width: 100px;
+            height: 100px;
+            margin:auto;
+            
+            background-color: rgb(28, 223, 206);
+            border-radius: 50%;
+            animation: move 3s infinite alternate; /* Add animation to the circle */
+            
+        }
+
+        @keyframes move {
+            0% {
+                transform: translateX(0);
+            }
+            25% {
+                transform: translateX(200px);
+            }
+            50% {
+                transform: translateX(0px);
+            }
+            75% {
+                transform: translateX(-200px);
+            }
+
+            100% {
+                transform: translateX(0px);
+            }
+        }
+
+
+        .circle2 {
+            width: 100px;
+            height: 100px;
+            margin:auto;
+            margin-top: 200px;
+            
+            background-color: rgb(28, 223, 44);
+            border-radius: 50%;
+            /* i want to bounce the circle up and down, how can i do that? */
+            animation: bounce 1s infinite alternate; /* Add animation to the circle */
+        }
+        @keyframes bounce {
+            0% {
+                transform: translateY(0);
+            }
+            50% {
+                transform: translateY(-100px); /* Move up by 100px */
+            }
+            100% {
+                transform: translateY(0); /* Move back to original position */
+            }
+        }
+
+</style>
+</head>
+<body>
+    <button>Click me</button>
+    <div class="circle"></div>
+    <div class="circle2"></div>
+</body>
+</html>

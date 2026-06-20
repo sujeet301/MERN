@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Interactive Page</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            padding: 30px;
+            background-color: #f4f4f4;
+        }
+
+        h1{
+            text-align: center;
+            color: darkblue;
+            margin-bottom: 20px;
+        }
+
+        .container{
+            width: 60%;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+        }
+
+        /* Button Hover */
+        button{
+            padding: 10px 20px;
+            border: none;
+            background-color: royalblue;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover{
+            background-color: darkblue;
+        }
+
+        /* Input Focus */
+        input{
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+        }
+
+        input:focus{
+            background-color: #ffffcc;
+            border: 2px solid green;
+            outline: none;
+        }
+
+        /* Link States */
+        a:link{
+            color: blue;
+        }
+
+        a:visited{
+            color: purple;
+        }
+
+        /* First and Last Child */
+        li:first-child{
+            color: green;
+            font-weight: bold;
+        }
+
+        li:last-child{
+            color: red;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+
+        <h1>Interactive Page</h1>
+
+        <h3>Input Fields</h3>
+        <input type="text" placeholder="Enter your name">
+        <input type="email" placeholder="Enter your email">
+
+        <br><br>
+
+        <h3>Button</h3>
+        <button>Submit</button>
+
+        <br><br>
+
+        <h3>Links</h3>
+        <a href="https://www.google.com" target="_blank">Google</a>
+        <br>
+        <a href="https://developer.mozilla.org" target="_blank">MDN Docs</a>
+
+        <br><br>
+
+        <h3>Skills List</h3>
+        <ul>
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React</li>
+            <li>Node.js</li>
+        </ul>
+
+    </div>
+
+</body>
+</html>

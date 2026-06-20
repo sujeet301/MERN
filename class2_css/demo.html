@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="demo.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Playwrite+AU+VIC+Guides&display=swap"
+      rel="stylesheet"
+    />
+    <!-- <style>
+      /* .parent {
+        color: red;
+        font-size: 50px;
+      }
+      .child {
+        color: green;
+        font-size: 30px;
+        font-family: "Playwrite AU VIC Guides", cursive;
+        line-height: 10;
+        font-weight: 1000;
+       
+        background-size:contain;
+        background-repeat: repeat;
+        
+        padding: 20px;
+      } */
+
+     .parent h1 + p {
+        color: green;
+      }
+
+      
+
+     .child  h1 ~ p { color: purple; }
+
+    </style> -->
+`   <style>
+    .container {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        gap: 20px;
+    }
+    .child1 {
+        width: 100px;
+        height: 100px;
+        background-color: red;
+    }
+    .child2 {
+        width: 100px;
+        height: 100px;
+        background-color: green;
+    }
+    .child3 {
+        width: 100px;
+        height: 100px;
+        background-color: blue;
+    }
+</style>  
+
+</head>
+  <body>
+      <!-- <h1 style="color: blueviolet; font-size: 80px;">css class</h1>
+      <p style="color: brown;font-size: 50px;" >Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus mollitia provident natus error fugiat? Distinctio iste repellat mollitia quam voluptatum!</p> -->
+    <!-- <h1 class="heading">css class</h1>
+    <p class="para">Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus mollitia provident natus error fugiat? Distinctio 
+        iste repellat mollitia quam voluptatum!</p> -->
+
+        <!-- <div class="parent">
+            <h1>Parent</h1>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur
+        quasi doloremque hic laboriosam aspernatur similique nulla! Voluptates
+        hic esse incidunt?
+      </p>
+      <p>
+          Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur
+        quasi doloremque hic laboriosam aspernatur similique nulla! Voluptates
+        hic esse incidunt?
+      </p>
+      </div>
+      
+      <div class="child">
+        <h1>Child</h1>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur
+        quasi doloremque hic laboriosam aspernatur similique nulla! Voluptates
+        hic esse incidunt?
+      </p>
+      <p>
+        Lorem ipsum dolor sit, amet consectetur adipisicing elit. Tenetur
+        quasi doloremque hic laboriosam aspernatur similique nulla! Voluptates
+        hic esse incidunt?
+      </p>
+      
+    </div> -->
+        
+            <div class="container">
+                <div class="child1"></div>
+                <div class="child2"></div>
+                <div class="child3"></div>
+            </div>
+        
+</body>
+</html>

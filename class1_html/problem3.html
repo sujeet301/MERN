@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Registration Form</title>
+
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+        }
+
+        h1 {
+            text-align: center;
+            color: navy;
+        }
+
+        form {
+            width: 60%;
+            margin: auto;
+            background-color: white;
+            padding: 20px;
+            border: 2px solid gray;
+            border-radius: 10px;
+        }
+
+        fieldset {
+            margin-bottom: 15px;
+            padding: 15px;
+        }
+
+        legend {
+            font-weight: bold;
+            color: darkblue;
+        }
+
+        input, select {
+            margin-top: 5px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 16px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>Learning Platform Registration Form</h1>
+
+    <form>
+
+        <fieldset>
+            <legend>Personal Details</legend>
+
+            Name:<br>
+            <input type="text" required size="40"><br><br>
+
+            Email:<br>
+            <input type="email" required size="40"><br><br>
+
+            Password:<br>
+            <input type="password" required size="40"><br><br>
+
+            Phone:<br>
+            <input type="tel" size="40">
+        </fieldset>
+
+        <fieldset>
+            <legend>Gender</legend>
+
+            <input type="radio" name="gender"> Male
+            <input type="radio" name="gender"> Female
+            <input type="radio" name="gender"> Other
+        </fieldset>
+
+        <fieldset>
+            <legend>Skills</legend>
+
+            <input type="checkbox"> HTML
+            <input type="checkbox"> CSS
+            <input type="checkbox"> JavaScript
+            <input type="checkbox"> React
+            <input type="checkbox"> Node.js
+        </fieldset>
+
+        <fieldset>
+            <legend>Other Information</legend>
+
+            Date of Birth:<br>
+            <input type="date"><br><br>
+
+            Country:<br>
+            <select>
+                <option>India</option>
+                <option>USA</option>
+                <option>Canada</option>
+                <option>Australia</option>
+                <option>United Kingdom</option>
+            </select>
+
+            <br><br>
+
+            Resume Upload:<br>
+            <input type="file" accept=".pdf">
+        </fieldset>
+
+        <input type="checkbox" required>
+        I agree to the Terms & Conditions
+
+        <br><br>
+
+        <input type="submit" value="Register" class="btn">
+        <input type="reset" value="Reset" class="btn">
+
+    </form>
+
+</body>
+</html>
