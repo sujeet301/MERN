@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Students List</title>
+
+    <style>
+        body{
+            font-family: Arial;
+            text-align:center;
+            margin-top:50px;
+        }
+
+        button{
+            padding:10px 20px;
+            cursor:pointer;
+            background:#007bff;
+            color:white;
+            border:none;
+            border-radius:5px;
+        }
+
+        button:hover{
+            background:#0056b3;
+        }
+
+        #students{
+            margin-top:20px;
+        }
+
+        .student{
+            border:1px solid #ccc;
+            margin:10px auto;
+            padding:10px;
+            width:300px;
+            border-radius:5px;
+        }
+    </style>
+
+</head>
+<body>
+
+    <h1>Student List</h1>
+
+    <button onclick="loadStudents()">
+        Load Students
+    </button>
+
+    <div id="students"></div>
+
+    <script>
+
+        async function loadStudents(){
+
+            const response =
+            await fetch(
+                "http://localhost:3000/students"
+            );
+
+            const data =
+            await response.json();
+
+            const studentsDiv =
+            document.getElementById(
+                "students"
+            );
+
+            studentsDiv.innerHTML = "";
+
+            data.forEach(student => {
+
+                studentsDiv.innerHTML += `
+                    <div class="student">
+                        <h3>${student.name}</h3>
+                        <p>${student.course}</p>
+                    </div>
+                `;
+
+            });
+
+        }
+
+    </script>
+
+</body>
+</html>

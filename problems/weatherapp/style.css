@@ -2,28 +2,54 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
-    font-family:Arial, sans-serif;
+    font-family:'Poppins',sans-serif;
 }
 
 body{
-    background:linear-gradient(135deg,#4facfe,#00f2fe);
     min-height:100vh;
     display:flex;
     justify-content:center;
     align-items:center;
+
+    background:linear-gradient(
+        -45deg,
+        #00c6ff,
+        #0072ff,
+        #4facfe,
+        #43e97b
+    );
+
+    background-size:400% 400%;
+    animation:gradientBG 12s ease infinite;
+}
+
+@keyframes gradientBG{
+    0%{background-position:0% 50%;}
+    50%{background-position:100% 50%;}
+    100%{background-position:0% 50%;}
 }
 
 .container{
-    width:400px;
-    background:white;
-    padding:25px;
-    border-radius:15px;
+    width:420px;
+
+    background:rgba(255,255,255,.15);
+    backdrop-filter:blur(15px);
+
+    border-radius:25px;
+
+    padding:30px;
+
     text-align:center;
-    box-shadow:0 5px 20px rgba(0,0,0,0.2);
+
+    box-shadow:
+    0 8px 32px rgba(0,0,0,.25);
+
+    border:1px solid rgba(255,255,255,.2);
 }
 
 h1{
-    margin-bottom:20px;
+    color:white;
+    margin-bottom:25px;
 }
 
 .search-box{
@@ -33,35 +59,95 @@ h1{
 
 input{
     flex:1;
-    padding:10px;
-    border:1px solid #ccc;
-    border-radius:5px;
+
+    padding:14px;
+
+    border:none;
+    outline:none;
+
+    border-radius:12px;
+
+    font-size:16px;
 }
 
 button{
-    padding:10px 15px;
     border:none;
-    background:#007bff;
-    color:white;
+    padding:14px 18px;
+
+    border-radius:12px;
+
     cursor:pointer;
-    border-radius:5px;
+
+    background:#ff9800;
+    color:white;
+
+    transition:.3s;
 }
 
 button:hover{
-    background:#0056b3;
+    transform:translateY(-3px);
+    box-shadow:0 5px 15px rgba(0,0,0,.2);
 }
 
 .weather-card{
-    margin-top:20px;
+    margin-top:25px;
+
+    background:rgba(255,255,255,.25);
+
+    border-radius:20px;
+
+    padding:20px;
+
     display:none;
+
+    animation:fadeIn .7s ease;
+}
+
+@keyframes fadeIn{
+    from{
+        opacity:0;
+        transform:translateY(20px);
+    }
+
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+.weather-card h2{
+    color:white;
+    margin-bottom:15px;
 }
 
 .weather-card p{
+    color:white;
     margin:10px 0;
     font-size:18px;
 }
 
+.weather-icon{
+    font-size:70px;
+    animation:float 2s ease-in-out infinite;
+}
+
+@keyframes float{
+
+    0%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-10px);
+    }
+
+    100%{
+        transform:translateY(0);
+    }
+}
+
 #error{
-    color:red;
     margin-top:15px;
+    color:#ffdddd;
+    font-weight:bold;
 }

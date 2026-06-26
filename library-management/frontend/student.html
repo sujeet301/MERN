@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Student Dashboard</title>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+<nav>
+  <h1>📚 Library — Student Portal</h1>
+  <button onclick="logout()">Logout</button>
+</nav>
+
+<div class="container">
+  <div class="tabs">
+    <div class="tab active" onclick="switchTab('available')">Available Books</div>
+    <div class="tab"        onclick="switchTab('mybooks')">My Borrowed Books</div>
+  </div>
+
+  <!-- Available Books -->
+  <div id="available">
+    <div class="section-title">Available Books</div>
+    <div class="grid" id="bookGrid">Loading...</div>
+  </div>
+
+  <!-- My Books -->
+  <div id="mybooks" style="display:none">
+    <div class="section-title">My Borrowed Books</div>
+    <div class="grid" id="myGrid">Loading...</div>
+  </div>
+</div>
+<div id="toast"></div>
+
+<script>
+  const API  = 'http://localhost:5000/api';
+  const user = JSON.parse(localStorage.getItem('user') || 'null');
+  if (!user || user.role !== 'student') window.location.href = 'login.html';
+
+  function showToast(msg, error = false) {
+    const t = document.getElementById('toast');
+    t.textContent = msg;
+    t.className = 'show' + (error ? ' error' : '');
+    setTimeout(() => t.className = '', 3000);
+  }
+
+  function switchTab(tab) {
+    document.querySelectorAll('.tab').forEach((el, i) =>
+      el.classList.toggle('active', (i === 0) === (tab === 'available'))
+    );
+    document.getElementById('available').style.display = tab === 'available' ? '' : 'none';
+    document.getElementById('mybooks').style.display   = tab === 'mybooks'   ? '' : 'none';
+    if (tab === 'mybooks') loadMyBooks();
+  }
+
+  async function loadBooks() {
+    const res   = await fetch(`${API}/student/books`, { credentials: 'include' });
+    const books = await res.json();
+    const grid  = document.getElementById('bookGrid');
+    if (!books.length) { grid.innerHTML = '<p>No books available right now.</p>'; return; }
+    grid.innerHTML = books.map(b => `
+      <div class="card">
+        <h3>${b.title}</h3>
+        <span>by ${b.author}</span>
+        <span class="badge available">Available</span>
+        <button class="btn-borrow" onclick="borrow('${b._id}')">Borrow</button>
+      </div>`).join('');
+  }
+
+  async function loadMyBooks() {
+    const res    = await fetch(`${API}/student/my-books`, { credentials: 'include' });
+    const borrows = await res.json();
+    const grid   = document.getElementById('myGrid');
+    if (!borrows.length) { grid.innerHTML = '<p>You have not borrowed any books.</p>'; return; }
+    grid.innerHTML = borrows.map(b => `
+      <div class="card">
+        <h3>${b.book.title}</h3>
+        <span>by ${b.book.author}</span>
+        <span class="badge ${b.returned ? 'returned' : 'borrowed'}">
+          ${b.returned ? 'Returned' : 'Not Returned'}
+        </span>
+        <span style="font-size:.8rem;color:#888">Borrowed: ${new Date(b.borrowedAt).toLocaleDateString()}</span>
+      </div>`).join('');
+  }
+
+  async function borrow(bookId) {
+    const res  = await fetch(`${API}/student/borrow/${bookId}`, { method: 'POST', credentials: 'include' });
+    const data = await res.json();
+    showToast(data.message, !res.ok);
+    if (res.ok) loadBooks();
+  }
+
+  async function logout() {
+    await fetch(`${API}/auth/logout`, { method: 'POST', credentials: 'include' });
+    localStorage.removeItem('user');
+    window.location.href = 'login.html';
+  }
+
+  loadBooks();
+</script>
+</body>
+</html>

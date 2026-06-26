@@ -6,6 +6,8 @@ const taskList = document.getElementById("taskList");
 
 const error = document.getElementById("error");
 
+
+
 // Load Tasks
 async function loadTasks() {
   const response = await fetch("/tasks");
